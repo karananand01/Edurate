@@ -3,7 +3,7 @@ Final Project for CSC 337 - Authors: Aditya Gupta, Karan Anand
 
 File Structure:
 
--   Prof-O-Meter/ Edurate
+-   Edurate
     -   server.js
     -   public_html
         -   search_page.html

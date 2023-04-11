@@ -3,7 +3,10 @@
 
     Author: Aditya Gupta, Karan Anand
 
-    Description: 
+    Description: HTML page that the student is able to view when they log in.
+    The page allows the student to search for courses either by course description
+    or by the name of the professor. The student can click on the found results
+    and enter the course page or the professor page.
 
 -->
 <!DOCTYPE html>
@@ -17,10 +20,12 @@
 
 
 <body>
+    <div id="welc">
+        <h1 id="welc_text"> Sample text </h1>
 
-    <div id="welc_text"> Sample text </div>
+        <div id="stud_info">Sample text</div>
+    </div>
 
-    <div id="stud_info">Sample text</div>
 
     <div id="srch">
         <h1>Search by course description</h1>
@@ -30,9 +35,10 @@
         <h1>Search by professor</h1>
         <input type="text" id="prf_name">
         <button type="button" onclick=profSrch()>Search</button>
+        <div id="srch_res"> Sample text </div>
     </div>
 
-    <div id="srch_res"> Sample text </div>
+
 
 
 </body>
