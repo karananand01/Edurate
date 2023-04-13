@@ -122,3 +122,42 @@ h1 {
     position: relative;
     top: 50px;
 }
+
+/* Styling for index.html */
+.mainScreenBut { 
+    border: 3px solid green; 
+    padding: 20%;
+    position: fixed;
+    margin: 5%;
+    left: 25%;
+}
+
+/* Styling for loginStu.html */
+.loginStu {
+    padding: 5%;
+    margin: auto;
+    width: 20%;
+    border: 3px solid black;
+}
+
+/* Styling for SignUp.html */
+.signUp {
+    border: 3px solid #fff;
+    padding: 20px;
+}
+
+.psignUp {
+    width: 50%;
+    float: left;
+    padding: 20px;
+    border: 2px solid red;
+}  
+
+.signUp {
+    display: flex;
+}
+
+.psignUp {
+    flex: 1;
+    border: 2px solid black;
+}  
