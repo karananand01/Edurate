@@ -14,7 +14,7 @@ body {
 
 h1 {
     text-align: center;
-    margin: 50px;
+    margin: 15px;
 }
 
 /* Styling for search_page.html */
@@ -46,6 +46,7 @@ h1 {
     padding: 10px;
     width: 100%;
     height: 85%;
+    text-align: center;
     border-bottom: 2px solid black;
 }
 
@@ -58,32 +59,36 @@ h1 {
 /* Styling for prof_page.html */
 
 #img {
+    border: 2px solid black;
     display: inline-block;
     position: relative;
-    margin: 50px;
+    margin: 10px;
     top: 100px;
     left: 100px;
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
 }
 
 #about {
+    border: 2px solid black;
     display: inline-block;
     position: relative;
     width: 400px;
     height: 400px;
-    left: 500px;
+    left: 150px;
 }
 
 #crs_lst {
+    border: 2px solid black;
     display: inline-block;
     position: relative;
-    left: 600px;
+    left: 200px;
     width: 400px;
     height: 400px;
 }
 
 #edit_prof {
+    border: 2px solid black;
     display: block;
     position: absolute;
     top: 600px;
@@ -124,8 +129,8 @@ h1 {
 }
 
 /* Styling for index.html */
-.mainScreenBut { 
-    border: 3px solid green; 
+.mainScreenBut {
+    border: 3px solid green;
     padding: 20%;
     position: fixed;
     margin: 5%;
@@ -151,7 +156,7 @@ h1 {
     float: left;
     padding: 20px;
     border: 2px solid red;
-}  
+}
 
 .signUp {
     display: flex;
@@ -160,4 +165,4 @@ h1 {
 .psignUp {
     flex: 1;
     border: 2px solid black;
-}  
+}
