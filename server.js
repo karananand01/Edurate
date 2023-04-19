@@ -50,6 +50,7 @@ var StudentSchema = new mongoose.Schema({
     username: String,
     password: String,
     salt: String,
+    hash: String,
     University: String,
     Major: String
 });
@@ -59,6 +60,7 @@ var ProfessorSchema = new mongoose.Schema({
     username: String,
     password: String,
     salt: String,
+    hash: String,
     courses: [String],
     university: String,
     image: String
@@ -69,7 +71,7 @@ var CourseSchema = new mongoose.Schema({
     name: String,
     overview: String,
     professor: String,
-    reviews: [Review]
+    //reviews: [Review]
 });
 var Course = mongoose.model('Course', CourseSchema);
 
@@ -82,7 +84,142 @@ var ReviewSchema = new mongoose.Schema({
 });
 var Review = mongoose.model('Review', ReviewSchema);
 
+/**
+ * LOL
+ */
+app.get('/student/account/create/:username/:password', (req, res) => {
+    let p1 = Student.find({username: req.params.username}).exec();
+    p1.then( (results) => { 
+      if (results.length > 0) {
+        res.end('That username is already taken.');
+      } else {
+  
+        let newSalt = Math.floor((Math.random() * 1000000));
+        let toHash = req.params.password + newSalt;
+        var hash = crypto.createHash('sha3-256');
+        let data = hash.update(toHash, 'utf-8');
+        let newHash = data.digest('hex');
+  
+        var newUser = new Student({ 
+          username: req.params.username,
+          salt: newSalt,
+          hash: newHash
+        });
+        newUser.save().then( (doc) => { 
+            res.end('Created new account!');
+          }).catch( (err) => { 
+            console.log(err);
+            res.end('Failed to create new account.');
+          });
+      }
+    });
+    p1.catch( (error) => {
+      res.end('Failed to create new account.');
+    });
+  });
+  
+  /**
+   * Process a Student login request.
+   */  
+app.get('/student/account/login/:username/:password', (req, res) => {
+    let u = req.params.username;
+    let p = req.params.password;
+    let p1 = Student.find({username:u}).exec();
+    p1.then( (results) => { 
+      if (results.length == 1) {
+  
+        let existingSalt = results[0].salt;
+        let toHash = req.params.password + existingSalt;
+        var hash = crypto.createHash('sha3-256');
+        let data = hash.update(toHash, 'utf-8');
+        let newHash = data.digest('hex');
+        
+        console.log("existingSalt:", existingSalt);
+        console.log("toHash:", toHash);
+        console.log("newHash:", newHash);
+        console.log("results[0].hash:", results[0].hash);
 
+        if (newHash == results[0].hash) {
+          let id = cm.sessions.addOrUpdateSession(u);
+          res.cookie("login", {username: u, sid: id}, {maxAge: 60000*60*24});
+          res.end('SUCCESS');
+        } else {
+          res.end('password was incorrect');
+        }
+      } else {
+        res.end('login failed');
+      }
+    });
+    p1.catch( (error) => {
+      res.end('login failed');
+    });
+  });
+  
+/**
+ * LOL2
+ */
+app.get('/prof/account/create/:username/:password', (req, res) => {
+    let p1 = Professor.find({username: req.params.username}).exec();
+    p1.then( (results) => { 
+      if (results.length > 0) {
+        res.end('That username is already taken.');
+      } else {
+  
+        let newSalt = Math.floor((Math.random() * 1000000));
+        let toHash = req.params.password + newSalt;
+        var hash = crypto.createHash('sha3-256');
+        let data = hash.update(toHash, 'utf-8');
+        let newHash = data.digest('hex');
+  
+        var newUser = new Professor({ 
+          username: req.params.username,
+          salt: newSalt,
+          hash: newHash
+        });
+        newUser.save().then( (doc) => { 
+            res.end('Created new account!');
+          }).catch( (err) => { 
+            console.log(err);
+            res.end('Failed to create new account.');
+          });
+      }
+    });
+    p1.catch( (error) => {
+      res.end('Failed to create new account.');
+    });
+  });
+  
+  /**
+   * Process a Prof login request.
+   */
+  app.get('/prof/account/login/:username/:password', (req, res) => {
+    let u = req.params.username;
+    let p = req.params.password;
+    let p1 = Professor.find({username:u}).exec();
+    p1.then( (results) => { 
+      if (results.length == 1) {
+  
+        let existingSalt = results[0].salt;
+        let toHash = req.params.password + existingSalt;
+        var hash = crypto.createHash('sha3-256');
+        let data = hash.update(toHash, 'utf-8');
+        let newHash = data.digest('hex');
+        
+        if (newHash == results[0].hash) {
+          let id = cm.sessions.addOrUpdateSession(u);
+          res.cookie("login", {username: u, sid: id}, {maxAge: 60000*60*24});
+          res.end('SUCCESS');
+        } else {
+          res.end('password was incorrect');
+        }
+      } else {
+        res.end('login failed');
+      }
+    });
+    p1.catch( (error) => {
+      res.end('login failed');
+    });
+  });
 
 // Start up the server to listen on port 80
 const port = 80;

@@ -16,6 +16,8 @@
     <meta charset="utf-8">
     <title></title>
     <link id="cssFile" rel="stylesheet" type="text/css" href="./style.css">
+    <script src="./jquery.js"></script>
+    <script src="./login.js"></script>  
 </head>
 
 <body>
@@ -27,7 +29,7 @@
 
     <div class = "loginStu">
         <label for = "username">Email</label>
-        <input type = "text" name = "username" id = "email" required>
+        <input type = "text" name = "username" id = "username" required>
         <br><br>
         <label for = "pass">Password</label>
         <input type = "password" name = "pass" id = "pass" required>
@@ -35,10 +37,10 @@
         <label for = "professor">Login as a professor?</label>
         <input type = "checkbox" id = "professor" name = "professor" required>
         <br><br>
-        <button type = "button" name = "Submit" onclick = "">Login</button>
+        <button type = "button" name = "Submit" onclick = "loginstudent()">Login</button>
         <br><br>
         <label for = "signup">Don't have an account?</label>
-        <button type = "button" name = "signup" onclick = "">Sign up</button>
+        <button type = "button" name = "signup" onclick = "window.location.href='SignUp.html'">Sign up</button>
     </div>
 
 </body>

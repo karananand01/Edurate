@@ -15,6 +15,8 @@
     <meta charset="utf-8">
     <title></title>
     <link id="cssFile" rel="stylesheet" type="text/css" href="./style.css">
+    <script src="./jquery.js"></script>
+    <script src="./login.js"></script>  
 </head>
 
 <body>
@@ -29,7 +31,7 @@
             <span>Professor Sign up</span>
             <br><br>
             <label for = "username">Email</label>
-            <input type = "text" name = "username" id = "email" required>
+            <input type = "text" name = "username" id = "username" required>
             <br><br>
             <label for = "pass">Password</label>
             <input type = "password" name = "pass" id = "pass" required>
@@ -37,28 +39,28 @@
             <label for = "uni">University</label>
             <input type = "text" name = "username" id = "uni" required>
             <br><br>        
-            <button type = "button" name = "Submit" onclick = "">Sign up</button>
+            <button type = "button" name = "Submit" onclick = "createAccountprof();">Sign up</button>
             <br><br>
             <label for = "login">Already have an account?</label>
-            <button type = "button" name = "login" onclick = "">Login</button>
+            <button type = "button" name = "login" onclick="window.location.href='loginProf.html'">Login</button>
         </div>
 
         <div class = "psignUp">
             <span>Student Sign up</span>
             <br><br>
-            <label for = "username">Email</label>
-            <input type = "text" name = "username" id = "email" required>
+            <label for = "usernameStu">Email</label>
+            <input type = "text" name = "usernameStu" id = "usernameStu" required>
             <br><br>
-            <label for = "pass">Password</label>
-            <input type = "password" name = "pass" id = "pass" required>
+            <label for = "passStu">Password</label>
+            <input type = "password" name = "passStu" id = "passStu" required>
             <br><br>
             <label for = "uni">University</label>
             <input type = "text" name = "username" id = "uni" required>
             <br><br>        
-            <button type = "button" name = "Submit" onclick = "">Sign up</button>
+            <button type = "button" name = "Submit" onclick = "createAccountstudent();">Sign up</button>
             <br><br>
             <label for = "login">Already have an account?</label>
-            <button type = "button" name = "login" onclick = "">Login</button>
+            <button type = "button" name = "login" onclick="window.location.href='loginStu.html'">Login</button>
         </div>
 
     </div>
