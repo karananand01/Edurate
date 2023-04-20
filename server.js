@@ -73,7 +73,7 @@ var CourseSchema = new mongoose.Schema({
     name: String,
     overview: String,
     professor: String,
-    //reviews: [Review]
+    reviews: [String]
 });
 var Course = mongoose.model('Course', CourseSchema);
 
@@ -237,6 +237,83 @@ app.get('/prof/account/login/:username/:password', (req, res) => {
     });
 });
 
+app.get('/course/create/:name/:prof', (req, res) => {
+    let n = req.params.name;
+    let p = req.params.prof;
+    let p1 = Course.find({ name: n }).exec();
+    p1.then((results) => {
+        if (results.length > 0) {
+            res.end("That course already exists");
+        } else {
+            let newCourse = Course({
+                name: n, professor: p,
+                overview: "This section is empty"
+            });
+            newCourse.save().then((doc) => {
+                let p2 = Professor.updateOne({ name: p },
+                    { $push: { courses: n } }).exec();
+                p2.then(() => {
+                    res.end("Success");
+                });
+                p2.catch((err) => {
+                    res.end("ERROR");
+                });
+            }).catch((err) => {
+                res.end("ERROR");
+            });
+        }
+    });
+    p1.catch((err) => {
+        res.end("ERROR");
+    });
+});
+
+app.get('/review/create/:txt/:crs', (req, res) => {
+    let t = req.params.txt;
+    let c = req.params.crs;
+    let newReview = Review({ review: t });
+    p1 = newReview.save();
+    p1.then((doc) => {
+        let p2 = Course.updateOne({ name: c }, { $push: { reviews: doc.id } }).exec();
+        p2.then(() => {
+            res.end("Success");
+        });
+        p2.catch((err) => {
+            res.end("ERROR");
+        });
+    });
+    p1.catch((err) => {
+        res.end("ERROR");
+    });
+});
+
+app.get('/review/retrieve/:id', (req, res) => {
+    let i = req.params.id;
+    p1 = Review.findOne({ _id: i }).exec();
+    p1.then((doc) => {
+        res.end(JSON.stringify(doc));
+    });
+    p1.catch((err) => {
+        res.end("ERROR");
+    });
+});
+
+app.get('/prof/edit/about/:prf/:abt', (req, res) => {
+    let a = req.params.abt;
+    let n = req.params.prf;
+    let p1 = Professor.updateOne({ name: n }, { about: a }).exec();
+    p1.then(() => {
+        res.end("Success");
+    })
+    p1.catch((err) => {
+        res.end("ERROR");
+    });
+});
+
+app.get('/course/page/:nm', (req, res) => {
+    res.cookie('course', { name: req.params.nm });
+    res.end("Success");
+});
 
 app.get('/prof/page/details/:nm', (req, res) => {
     let pr = req.params.nm;
@@ -245,6 +322,22 @@ app.get('/prof/page/details/:nm', (req, res) => {
         result = {
             univ: doc.university, about: doc.about,
             courses: doc.courses, name: doc.name
+        };
+        res.end(JSON.stringify(result));
+    })
+    p1.catch((err) => {
+        res.end('FAIL');
+    });
+}
+);
+
+app.get('/course/page/details/:nm', (req, res) => {
+    let cr = req.params.nm;
+    let p1 = Course.findOne({ name: cr }).exec();
+    p1.then((doc) => {
+        result = {
+            name: doc.name, overview: doc.overview,
+            prof: doc.professor, rvws: doc.reviews
         };
         res.end(JSON.stringify(result));
     })

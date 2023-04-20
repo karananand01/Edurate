@@ -121,8 +121,9 @@ h1 {
 #rvs {
     position: relative;
     top: 20px;
-    width: 100%;
+    width: 80%;
     height: 500px;
+    margin: 2px solid black;
 }
 
 #add_rv {

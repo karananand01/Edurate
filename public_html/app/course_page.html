@@ -16,22 +16,38 @@
     <meta charset="utf-8">
     <title></title>
     <link id="cssFile" rel="stylesheet" type="text/css" href="./style.css">
+    <script src="./jquery.js"></script>
+    <script src="./code.js"></script>
 </head>
 
 
-<body>
+<body onload="getCoursePage()">
 
     <h1 id="crs_nm">Sample text</h1>
 
-    <p id="crs_ovrw">Sample Overview</p>
-
-    <div id="rvs">
-        <h1>
-            Reviews
-        </h1>
+    <div id="crs_ovrw">
+        <h2>Course Overview</h2>
+        <p id="crs_prof"></p>
+        <br>
+        <p id="crs_txt">Sample text</p>
     </div>
 
-    <div id="add_rv">Add review</div>
+    <div id="rvs">
+        <h2>
+            Reviews
+        </h2>
+        <div id="rv_in"></div>
+    </div>
+
+    <div id="add_rv">
+        <h2>
+            Add Review
+        </h2>
+        <br>
+        <textarea id="new_rvw" rows="4" cols="150"></textarea>
+        <button type="button" onclick="addRvw()">Add Review</button>
+        <br>
+    </div>
 
 </body>
 

@@ -34,22 +34,6 @@ function loginprof() {
         });
 }
 
-function getProfPage(prof_name) {
-    $.get(
-        '/prof/page/' + prof_name, (rs, status) => {
-            if (rs != 'FAIL') {
-                data = JSON.parse(rs);
-                window.location.href = data.ad;
-                fillInfo(prof_name, data);
-            }
-        }
-    );
-}
-
-function fillInfo(name, dt) {
-    let abtHead = document.getElementById("abt_hd");
-}
-
 function createAccountprof() {
     let u = $('#username').val();
     let p = $('#pass').val();
