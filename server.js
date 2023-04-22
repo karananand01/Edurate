@@ -80,7 +80,7 @@ var Course = mongoose.model('Course', CourseSchema);
 var ReviewSchema = new mongoose.Schema({
     poster: String,
     major: String,
-    rating: Number,
+    rating: String,
     review: String,
     visibility: String
 });
@@ -143,7 +143,7 @@ app.get('/student/account/login/:username/:password', (req, res) => {
 
             if (newHash == results[0].hash) {
                 let id = cm.sessions.addOrUpdateSession(u);
-                res.cookie("login", { username: u, sid: id }, { maxAge: 60000 * 60 * 24 });
+                res.cookie("login", { username: u, sid: id, type: "stud" }, { maxAge: 60000 * 60 * 24 });
                 res.end('SUCCESS');
             } else {
                 res.end('password was incorrect');
@@ -222,7 +222,7 @@ app.get('/prof/account/login/:username/:password', (req, res) => {
 
             if (newHash == results[0].hash) {
                 let id = cm.sessions.addOrUpdateSession(u);
-                res.cookie("login", { username: u, sid: id }, { maxAge: 60000 * 60 * 24 });
+                res.cookie("login", { username: u, sid: id, type: "prof" }, { maxAge: 60000 * 60 * 24 });
                 res.cookie("prof", { name: results[0].name });
                 res.end('SUCCESS');
             } else {
@@ -268,10 +268,13 @@ app.get('/course/create/:name/:prof', (req, res) => {
     });
 });
 
-app.get('/review/create/:txt/:crs', (req, res) => {
-    let t = req.params.txt;
+app.get('/review/create/:crs/:rvw/:rat/:pt/:vis', (req, res) => {
     let c = req.params.crs;
-    let newReview = Review({ review: t });
+    let t = req.params.rvw;
+    let r = req.params.rat;
+    let p = req.params.pt;
+    let v = req.params.vis;
+    let newReview = Review({ review: t, rating: r, poster: p, visibility: v });
     p1 = newReview.save();
     p1.then((doc) => {
         let p2 = Course.updateOne({ name: c }, { $push: { reviews: doc.id } }).exec();
@@ -312,6 +315,11 @@ app.get('/prof/edit/about/:prf/:abt', (req, res) => {
 
 app.get('/course/page/:nm', (req, res) => {
     res.cookie('course', { name: req.params.nm });
+    res.end("Success");
+});
+
+app.get('/prof/page/cookie/:nm', (req, res) => {
+    res.cookie('prof', { name: req.params.nm });
     res.end("Success");
 });
 

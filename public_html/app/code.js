@@ -10,6 +10,29 @@ function getCookieName(cookie, name) {
     }
 }
 
+function getUser(cookie) {
+    let cookies = cookie.split(";");
+    for (i in cookies) {
+        let keyVal = cookies[i].split("=");
+        if (keyVal[0].trim() == "login") {
+            let val = keyVal[1].split("%22");
+            val[3] = val[3].replace("%20", " ");
+            return String(val[3]);
+        }
+    }
+}
+
+function isProf(cookie) {
+    let cookies = cookie.split(";");
+    for (j in cookies) {
+        let keyVal = cookies[j].split("=");
+        if (keyVal[0].trim() == "login") {
+            let val = keyVal[1].split("%22");
+            return (val[9] == "prof");
+        }
+    }
+}
+
 function getProfPage() {
     let prof = getCookieName(document.cookie, "prof");
     $.get(
@@ -103,14 +126,30 @@ function addCourse() {
 
 function addRvw() {
     let n = $("#new_rvw").val();
+    let r = $("#shift").val();
     let crs = getCookieName(document.cookie, "course");
-    $.get('/review/create/' + n + '/' + crs, (data, status) => {
-        alert(data);
-        if (data == "Success") {
-            getCoursePage();
-        }
+    $.get('/review/create/' + crs + '/' + n + '/' + r + '/' + getUser(document.cookie) + '/' + "pub"
+        , (data, status) => {
+            alert(data);
+            if (data == "Success") {
+                getCoursePage();
+            }
 
-    });
+        });
+}
+
+function addDM() {
+    let n = $("#new_rvw").val();
+    let r = $("#shift").val();
+    let crs = getCookieName(document.cookie, "course");
+    $.get('/review/create/' + crs + '/' + n + '/' + r + '/' + getUser(document.cookie) + '/' + "priv"
+        , (data, status) => {
+            alert(data);
+            if (data == "Success") {
+                getCoursePage();
+            }
+
+        });
 }
 
 function getReviews(ids) {
@@ -118,7 +157,14 @@ function getReviews(ids) {
     for (i in ids) {
         let p1 = $.get('/review/retrieve/' + ids[i], (data, status) => {
             rv = JSON.parse(data);
-            retText += "<div class='rv'>" + rv.review + "</div>";
+            if (rv.visibility != "priv") {
+                retText += "<div class='rv'>" + "Posted by : " + rv.poster + "<br><br>";
+                retText += "Rating : " + rv.rating + "<br><br>Review :" + rv.review + "</div>";
+            } else if (isProf(document.cookie)) {
+                retText += "<div class='rv'> Direct Message <br><br>";
+                retText += rv.review + "</div>";
+            }
+
         });
         p1.then(() => {
             if (i == ids.length - 1) {
@@ -127,4 +173,10 @@ function getReviews(ids) {
             }
         });
     }
+}
+
+function updateRange() {
+    let slider = document.getElementById('csrange');
+    let rangeVal = document.getElementById('shift');
+    rangeVal.innerHTML = Number(slider.value) + Number(1);
 }
