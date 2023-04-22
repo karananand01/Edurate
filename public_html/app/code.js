@@ -63,8 +63,9 @@ function fillCourseInfo(data) {
     let crsProf = document.getElementById("crs_prof");
     crsHead.text(data.name);
     crsText.text(data.overview);
+    data.prof = data.prof.replace(" ", "&nbsp");
     let lnk = "<a href='javascript:;' onclick=getProf('";
-    lnk += "')>" + data.prof + "</a><br>";
+    lnk += data.prof + "')>" + data.prof + "</a><br>";
     crsProf.innerHTML = lnk;
     getReviews(data.rvws);
 }
@@ -107,8 +108,11 @@ function getCourse(name) {
     );
 }
 
-function getProf() {
-    window.location.href = '/app/prof_page.html';
+function getProf(name) {
+    name = name.replace("&nbsp", " ");
+    $.get('/prof/cookie/' + name, () => {
+        window.location.href = '/app/prof_page.html';
+    });
 }
 
 
@@ -179,4 +183,44 @@ function updateRange() {
     let slider = document.getElementById('csrange');
     let rangeVal = document.getElementById('shift');
     rangeVal.innerHTML = Number(slider.value) + Number(1);
+}
+
+function crsSrch() {
+    let srch = $("#crs_desc").val();
+    let retText = "";
+    let p1 = $.get('/course/search/' + srch, (data, status) => {
+        rs = JSON.parse(data)
+        for (i in rs) {
+            rs[i].name = rs[i].name.replace(" ", "&nbsp");
+            retText += "<div class='rv'> Course Name: " + rs[i].name + "<br><br>";
+            retText += "Course Overview: " + rs[i].overview + "<br><br>";
+            retText += "<button type='button'" + ' onclick=getCourse("';
+            retText += rs[i].name + '")>Click here to visit course page';
+            retText += "</button></div>";
+        }
+    });
+    p1.then(() => {
+        let crsRes = document.getElementById("srch_res");
+        crsRes.innerHTML = retText;
+    })
+}
+
+function profSrch() {
+    let srch = $("#prf_name").val();
+    let retText = "";
+    let p1 = $.get('/prof/search/' + srch, (data, status) => {
+        rs = JSON.parse(data)
+        for (i in rs) {
+            rs[i].name = rs[i].name.replace(" ", "&nbsp");
+            retText += "<div class='rv'> Professor Name: " + rs[i].name + "<br><br>";
+            retText += "About Professor: " + rs[i].about + "<br><br>";
+            retText += "<button type='button'" + ' onclick=getProf("';
+            retText += rs[i].name + '")>Click here to visit course page';
+            retText += "</button></div>";
+        }
+    });
+    p1.then(() => {
+        let crsRes = document.getElementById("srch_res");
+        crsRes.innerHTML = retText;
+    })
 }

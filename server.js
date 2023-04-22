@@ -136,11 +136,6 @@ app.get('/student/account/login/:username/:password', (req, res) => {
             let data = hash.update(toHash, 'utf-8');
             let newHash = data.digest('hex');
 
-            console.log("existingSalt:", existingSalt);
-            console.log("toHash:", toHash);
-            console.log("newHash:", newHash);
-            console.log("results[0].hash:", results[0].hash);
-
             if (newHash == results[0].hash) {
                 let id = cm.sessions.addOrUpdateSession(u);
                 res.cookie("login", { username: u, sid: id, type: "stud" }, { maxAge: 60000 * 60 * 24 });
@@ -316,6 +311,35 @@ app.get('/prof/edit/about/:prf/:abt', (req, res) => {
 app.get('/course/page/:nm', (req, res) => {
     res.cookie('course', { name: req.params.nm });
     res.end("Success");
+});
+
+app.get('/prof/cookie/:nm', (req, res) => {
+    res.cookie('prof', { name: req.params.nm });
+    res.end("Success");
+});
+
+app.get('/course/search/:srch', (req, res) => {
+    let srch = req.params.srch;
+    let p1 = Course.find({ overview: { "$regex": srch, "$options": "i" } }).exec();
+    p1.then((results) => {
+        res.end(JSON.stringify(results));
+    });
+    p1.catch((err) => {
+        console.log(err);
+        res.end('FAIL');
+    });
+});
+
+app.get('/prof/search/:srch', (req, res) => {
+    let srch = req.params.srch;
+    let p1 = Professor.find({ name: { "$regex": srch, "$options": "i" } }).exec();
+    p1.then((results) => {
+        res.end(JSON.stringify(results));
+    });
+    p1.catch((err) => {
+        console.log(err);
+        res.end('FAIL');
+    });
 });
 
 app.get('/prof/page/cookie/:nm', (req, res) => {
