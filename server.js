@@ -86,6 +86,9 @@ var ReviewSchema = new mongoose.Schema({
 });
 var Review = mongoose.model('Review', ReviewSchema);
 
+/*
+    End users session
+*/
 app.get('/logout', (req, res) => {
     let c = req.cookies;
     if (c && c.login) {
@@ -96,7 +99,7 @@ app.get('/logout', (req, res) => {
 });
 
 /**
- * LOL
+ * Create new student account
  */
 app.get('/student/account/create/:username/:password', (req, res) => {
     let p1 = Student.find({ username: req.params.username }).exec();
@@ -162,7 +165,7 @@ app.get('/student/account/login/:username/:password', (req, res) => {
 });
 
 /**
- * LOL2
+ * Create new professor account
  */
 app.get('/prof/account/create/:username/:password/:uni/:nm', (req, res) => {
     let p1 = Professor.find({ username: req.params.username }).exec();
@@ -241,6 +244,10 @@ app.get('/prof/account/login/:username/:password', (req, res) => {
     });
 });
 
+/*
+    Create new course in database and add the course name
+    to the professor's collection
+*/
 app.get('/course/create/:name/:prof', (req, res) => {
     let n = req.params.name;
     let p = req.params.prof;
@@ -272,6 +279,11 @@ app.get('/course/create/:name/:prof', (req, res) => {
     });
 });
 
+/*
+    Create new review for a course using its rating, review content 
+    and visibility. The review id is also stored in the collection 
+    for the course.
+*/
 app.get('/review/create/:crs/:rvw/:rat/:pt/:vis', (req, res) => {
     let c = req.params.crs;
     let t = req.params.rvw;
@@ -294,6 +306,10 @@ app.get('/review/create/:crs/:rvw/:rat/:pt/:vis', (req, res) => {
     });
 });
 
+/*
+    Function to retrieve a review from the database from 
+    the id of the review
+*/
 app.get('/review/retrieve/:id', (req, res) => {
     let i = req.params.id;
     p1 = Review.findOne({ _id: i }).exec();
@@ -305,6 +321,9 @@ app.get('/review/retrieve/:id', (req, res) => {
     });
 });
 
+/*
+    Function to change the about section for a professor
+*/
 app.get('/prof/edit/about/:prf/:abt', (req, res) => {
     let a = req.params.abt;
     let n = req.params.prf;
@@ -317,6 +336,9 @@ app.get('/prof/edit/about/:prf/:abt', (req, res) => {
     });
 });
 
+/*
+    Function to change the overview section for a course.
+*/
 app.get('/course/edit/overview/:crs/:abt', (req, res) => {
     let a = req.params.abt;
     let c = req.params.crs;
@@ -329,16 +351,26 @@ app.get('/course/edit/overview/:crs/:abt', (req, res) => {
     });
 });
 
+/*
+    Function to create a cookie for a course
+*/
 app.get('/course/page/:nm', (req, res) => {
     res.cookie('course', { name: req.params.nm });
     res.end("Success");
 });
 
+/*
+    Function to create a cookie for a professor
+*/
 app.get('/prof/cookie/:nm', (req, res) => {
     res.cookie('prof', { name: req.params.nm });
     res.end("Success");
 });
 
+/*
+    Function to search for all courses in the database that have
+    overviews matching words entered by the user 
+*/
 app.get('/course/search/:srch', (req, res) => {
     let srch = req.params.srch;
     let p1 = Course.find({ overview: { "$regex": srch, "$options": "i" } }).exec();
@@ -351,6 +383,10 @@ app.get('/course/search/:srch', (req, res) => {
     });
 });
 
+/*
+    Function to search for all professors in the database who have
+    names matching words entered by the user 
+*/
 app.get('/prof/search/:srch', (req, res) => {
     let srch = req.params.srch;
     let p1 = Professor.find({ name: { "$regex": srch, "$options": "i" } }).exec();
@@ -363,11 +399,10 @@ app.get('/prof/search/:srch', (req, res) => {
     });
 });
 
-app.get('/prof/page/cookie/:nm', (req, res) => {
-    res.cookie('prof', { name: req.params.nm });
-    res.end("Success");
-});
-
+/*
+    Function to retrieve information about a professor from the
+    database from the name of the professor.
+*/
 app.get('/prof/page/details/:nm', (req, res) => {
     let pr = req.params.nm;
     let p1 = Professor.findOne({ name: pr }).exec();
@@ -384,6 +419,10 @@ app.get('/prof/page/details/:nm', (req, res) => {
 }
 );
 
+/*
+    Function to retrieve information about a course from the
+    database from the name of the course.
+*/
 app.get('/course/page/details/:nm', (req, res) => {
     let cr = req.params.nm;
     let p1 = Course.findOne({ name: cr }).exec();
