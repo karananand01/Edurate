@@ -39,6 +39,14 @@ class CustomSessions {
   startCleanup() {
     setInterval(this.cleanupSessions, 2000);
   }
+
+  deleteSession(user) {
+    let entry = this.sessions[user];
+    if (entry != undefined) {
+      delete this.sessions[user];
+    }
+  }
+
 }
 
 exports.sessions = new CustomSessions();

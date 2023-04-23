@@ -45,3 +45,12 @@ function createAccountprof() {
             alert(data);
         });
 }
+
+function help() {
+    window.location.href = '/account/help_page.html';
+}
+
+function homePage() {
+    window.location.href = '/account/index.html';
+}
+

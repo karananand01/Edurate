@@ -95,6 +95,19 @@ h1 {
     margin: 20px;
 }
 
+#control {
+    position: fixed;
+    background-color: cadetblue;
+    text-align: center;
+    padding: 2px;
+    z-index: 2;
+    width: 300px;
+    height: 30px;
+    top: 20px;
+    right: 20px;
+    border: 2px solid black;
+}
+
 /* Styling for course page */
 
 #crs_nm {

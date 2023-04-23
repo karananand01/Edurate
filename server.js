@@ -86,6 +86,15 @@ var ReviewSchema = new mongoose.Schema({
 });
 var Review = mongoose.model('Review', ReviewSchema);
 
+app.get('/logout', (req, res) => {
+    let c = req.cookies;
+    if (c && c.login) {
+        cm.sessions.deleteSession(c.login.username, c);
+    }
+    res.end();
+
+});
+
 /**
  * LOL
  */
@@ -300,6 +309,18 @@ app.get('/prof/edit/about/:prf/:abt', (req, res) => {
     let a = req.params.abt;
     let n = req.params.prf;
     let p1 = Professor.updateOne({ name: n }, { about: a }).exec();
+    p1.then(() => {
+        res.end("Success");
+    })
+    p1.catch((err) => {
+        res.end("ERROR");
+    });
+});
+
+app.get('/course/edit/overview/:crs/:abt', (req, res) => {
+    let a = req.params.abt;
+    let c = req.params.crs;
+    let p1 = Course.updateOne({ name: c }, { overview: a }).exec();
     p1.then(() => {
         res.end("Success");
     })

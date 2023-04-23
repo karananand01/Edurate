@@ -20,6 +20,7 @@ function getUser(cookie) {
             return String(val[3]);
         }
     }
+    return false;
 }
 
 function isProf(cookie) {
@@ -68,6 +69,24 @@ function fillCourseInfo(data) {
     lnk += data.prof + "')>" + data.prof + "</a><br>";
     crsProf.innerHTML = lnk;
     getReviews(data.rvws);
+    if (isProf(document.cookie)) {
+        let rem = document.getElementById("add_rv");
+        let txt = "<h2>Edit Course Information<h2><br><br>";
+        txt += '<textarea id="orv_edit" rows="3" cols="150"></textarea>';
+        txt += '<button type="button" onclick="editCourse()">Edit Overview</button>'
+        rem.innerHTML = txt;
+    }
+}
+
+function editCourse() {
+    let newOr = $("#orv_edit").val();
+    let crs = getCookieName(document.cookie, "course");
+    $.get('/course/edit/overview/' + crs + '/' + newOr, (data, status) => {
+        alert(data);
+        if (data == "Success") {
+            getCoursePage();
+        }
+    });
 }
 
 function fillInfo(data) {
@@ -83,6 +102,10 @@ function fillInfo(data) {
         cls += data.courses[i] + '")>' + data.courses[i] + '</a><br>';
     }
     cs.innerHTML = cls;
+    if (!isProf(document.cookie)) {
+        let rem = document.getElementById("edit_prof");
+        rem.remove();
+    }
 }
 
 function changeAbt() {
@@ -223,4 +246,24 @@ function profSrch() {
         let crsRes = document.getElementById("srch_res");
         crsRes.innerHTML = retText;
     })
+}
+
+function homePage() {
+    if (isProf(document.cookie)) {
+        getProf(getCookieName(document.cookie, "prof"));
+    } else {
+        window.location.href = '/app/search_page.html';
+    }
+}
+
+function help() {
+    window.location.href = '/app/help_page.html';
+}
+
+function logout() {
+    $.get("/logout", () => {
+        document.cookie = "";
+        window.location.href = '/account/index.html';
+    });
+
 }
