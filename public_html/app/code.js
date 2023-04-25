@@ -274,7 +274,10 @@ function getReviews(ids) {
                 retText += "Rating : " + rv.rating + "<br><br>Review :" + rv.review + "</div>";
             } else if (isProf(document.cookie)) {
                 retText += "<div class='rv'> Direct Message <br><br>";
-                retText += rv.review + "</div>";
+                retText += rv.review + "<br><br>";
+                retText += "<button type='button'" + ' onclick=deleteDM("';
+                retText += rv._id + '")>Delete Message</button></div>';
+                console.log(rv);
             }
 
         });
@@ -285,6 +288,20 @@ function getReviews(ids) {
             }
         });
     }
+}
+
+/*
+    Function that takes review ID and deletes it from MongoDB database
+    id is a string
+*/
+function deleteDM(id) {
+    let crs = getCookieName(document.cookie, "course");
+    $.get('/review/delete/' + id + '/' + crs, (data, status) => {
+        if (data == "Success") {
+            alert("Direct Message Deleted");
+            getCoursePage();
+        }
+    });
 }
 
 /*
@@ -340,7 +357,7 @@ function profSrch() {
             retText += "<div class='rv'> Professor Name: " + rs[i].name + "<br><br>";
             retText += "About Professor: " + rs[i].about + "<br><br>";
             retText += "<button type='button'" + ' onclick=getProf("';
-            retText += rs[i].name + '")>Click here to visit course page';
+            retText += rs[i].name + '")>Click here to visit home page';
             retText += "</button></div>";
         }
     });

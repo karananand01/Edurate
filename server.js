@@ -322,6 +322,28 @@ app.get('/review/retrieve/:id', (req, res) => {
 });
 
 /*
+    Function to delete a review from database by ID.
+*/
+app.get('/review/delete/:id/:crs', (req, res) => {
+    let i = req.params.id;
+    let c = req.params.crs;
+    p1 = Review.deleteOne({ _id: i }).exec();
+    p1.then(() => {
+        p2 = Course.updateOne({ name: c }, { $pull: { reviews: i } }).exec();
+        p2.then(() => {
+            res.end("Success");
+        });
+        p2.catch((err) => {
+            res.end("ERROR");
+        });
+    });
+    p1.catch((err) => {
+        res.end("ERROR");
+    });
+});
+
+
+/*
     Function to change the about section for a professor
 */
 app.get('/prof/edit/about/:prf/:abt', (req, res) => {
