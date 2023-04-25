@@ -1,3 +1,36 @@
+/*
+    function to facilitate login
+    as student or prof based on
+    checkbox value
+*/
+function login() {
+    let isProf = $('#professor');
+    if (isProf.prop("checked")) {
+        loginprof();
+    } else {
+        loginstudent();
+    }
+}
+
+/*
+    function to facilitate create account
+    as student or prof based on
+    checkbox value
+*/
+function createAccount(){
+    let isProf = $('#professor');
+    if (isProf.prop("checked")) {
+        createAccountprof();
+    } else {
+        createAccountstudent();
+    }
+}
+
+/*
+    function to facilitate login
+    for student, and redirecting to
+    search_page
+*/
 function loginstudent() {
     let u = $('#username').val();
     let p = $('#pass').val();
@@ -11,9 +44,13 @@ function loginstudent() {
         });
 }
 
+/*
+    function to facilitate create an account
+    for student
+*/
 function createAccountstudent() {
-    let u = $('#usernameStu').val();
-    let p = $('#passStu').val();
+    let u = $('#username').val();
+    let p = $('#pass').val();
     $.get(
         '/student/account/create/' + u + '/' + encodeURIComponent(p),
         (data, status) => {
@@ -21,6 +58,11 @@ function createAccountstudent() {
         });
 }
 
+/*
+    function to facilitate login
+    for prof, and redirecting to
+    professor home page
+*/
 function loginprof() {
     let u = $('#username').val();
     let p = $('#pass').val();
@@ -34,6 +76,10 @@ function loginprof() {
         });
 }
 
+/*
+    function to facilitate create an account
+    for professor
+*/
 function createAccountprof() {
     let u = $('#username').val();
     let p = $('#pass').val();

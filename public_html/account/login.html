@@ -1,13 +1,13 @@
 <!--
-    File: loginStu.html
+    File: login.html
 
     Author: Aditya Gupta, Karan Anand
 
-    Description: HTML page for student
-    login, where the client enters
+    Description: HTML page for Professors
+    and students login, where the client enters
     username/password and logins into
-    the student account, redirecting to
-    student course search page
+    the professor or student account, 
+    redirecting to respective home page
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -34,10 +34,10 @@
         <label for="pass">Password</label>
         <input type="password" name="pass" id="pass" required>
         <br><br>
-        <label for="professor">Login as a professor?</label>
+        <label for="professor">Login as a Professor?</label>
         <input type="checkbox" id="professor" name="professor" required>
         <br><br>
-        <button type="button" name="Submit" onclick="loginstudent()">Login</button>
+        <button type="button" name="Submit" onclick="login();">Login</button>
         <br><br>
         <label for="signup">Don't have an account?</label>
         <button type="button" name="signup" onclick="window.location.href='SignUp.html'">Sign up</button>
