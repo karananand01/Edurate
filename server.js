@@ -5,6 +5,18 @@ const fs = require('fs');
 const crypto = require('crypto');
 const cm = require('./customsessions');
 
+const multer = require('multer');
+//Specifying directory to save images
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, __dirname + '/public_html/app/images');
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname);
+    }
+});
+const upload = multer({ storage: storage });
+
 cm.sessions.startCleanup();
 
 const connection_string = 'mongodb://127.0.0.1/edurate';
@@ -44,6 +56,13 @@ app.use('*', (req, res, next) => {
         }
     }
     next();
+});
+
+/*
+    Post request for Uploading an image to be saved in server
+*/
+app.post('/upload', upload.single('photo'), (req, res, next) => {
+    res.redirect('/app/prof_page.html');
 });
 
 var StudentSchema = new mongoose.Schema({
@@ -191,7 +210,8 @@ app.get('/prof/account/create/:username/:password/:uni/:nm', (req, res) => {
                         about: "This Section is still Empty",
                         courses: "",
                         university: req.params.uni,
-                        name: req.params.nm
+                        name: req.params.nm,
+                        image: "default.jpg"
                     });
                     newUser.save().then((doc) => {
                         res.end('Created new account!');
@@ -359,6 +379,22 @@ app.get('/prof/edit/about/:prf/:abt', (req, res) => {
 });
 
 /*
+    Function to change the profile image for a professor
+*/
+app.get('/prof/edit/img/:prf/:im', (req, res) => {
+    let n = req.params.prf;
+    let i = req.params.im;
+
+    let p1 = Professor.updateOne({ name: n }, { image: i }).exec();
+    p1.then(() => {
+        res.end("Success");
+    })
+    p1.catch((err) => {
+        res.end("ERROR");
+    });
+});
+
+/*
     Function to change the overview section for a course.
 */
 app.get('/course/edit/overview/:crs/:abt', (req, res) => {
@@ -431,7 +467,8 @@ app.get('/prof/page/details/:nm', (req, res) => {
     p1.then((doc) => {
         result = {
             univ: doc.university, about: doc.about,
-            courses: doc.courses, name: doc.name
+            courses: doc.courses, name: doc.name,
+            image: doc.image
         };
         res.end(JSON.stringify(result));
     })

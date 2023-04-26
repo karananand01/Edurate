@@ -143,6 +143,8 @@ function fillInfo(data) {
     let abtHead = $("#abt_hd");
     let abtBody = $("#abt_txt");
     let cs = document.getElementById("crs_lst");
+    let im = document.getElementById("profPic");
+    im.innerHTML = showImage(data.image)
     abtHead.text('Professor ' + data.name + " : " + data.univ);
     abtBody.text(data.about);
     cls = "";
@@ -157,6 +159,20 @@ function fillInfo(data) {
         rem.remove();
     }
 }
+
+/*
+    function to display an image through its link on
+    html and also mentions alternative text for the
+    image.
+    Input: filename is the name of the image
+*/
+function showImage(filename) {
+    retString = "<img src=\"";
+    retString += "./images/" + filename;
+    retString += "\" alt=\"" + filename + "\" class = \"pics\">"
+    return retString;
+}
+
 
 /*
     Function to edit professors about section. It retrieves
@@ -398,4 +414,19 @@ function logout() {
         window.location.href = '/account/index.html';
     });
 
+}
+
+/*
+    Function to add a new image to the database of the professor and to update
+    The image is uploaded as the profile picture of the professor.
+*/
+function addImage() {
+    let im = document.getElementById('img').value.split("\\").slice(-1)[0];
+    let prof = getCookieName(document.cookie, "prof");
+    $.get('/prof/edit/img/' + prof + '/' + im, (data, status) => {
+        alert(data);
+        if (data == "Success") {
+            getProfPage();
+        }
+    });
 }
