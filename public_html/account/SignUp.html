@@ -20,40 +20,43 @@
 </head>
 
 <body>
-    <div class="navBar">
-
-    </div>
-
-    <h1>Sign up for Edurate!</h1>
-
-    <div class="signUp">
-        <div class="psignUp">
-            <br><br>
-            <label for="username">Email</label>
-            <input type="text" name="username" id="username" required>
-            <br><br>
-            <label for="pass">Password</label>
-            <input type="password" name="pass" id="pass" required>
-            <br><br>
-            <label for="nm">Name</label>
-            <input type="text" name="nm" id="nam" required>
-            <br><br>
-            <label for="uni">University</label>
-            <input type="text" name="username" id="uni" required>
-            <br><br>
-            <label for="professor">Sign up as a Professor?</label>
-            <input type="checkbox" id="professor" name="professor" required>
-            <br><br>    
-            <button type="button" name="Submit" onclick="createAccount();">Sign up</button>
-            <br><br>
-            <label for="login">Already have an account?</label>
-            <button type="button" name="login" onclick="window.location.href='login.html'">Login</button>
+    <div class="heading-containerSU">
+        <div class="heading">
+            <img src="./images/logoMain.png"
+                id = "edurateLogo"
+                alt="edurateLogo"
+                width="350"
+                height="100">
+            <br>
+            KNOW YOUR<br><b>COURSES.</b><br>KNOW YOUR<br><b>PROFESSORS.</b>
         </div>
     </div>
-    <div id="control">
-        <button type="button" onclick="help()">Help</button>
-        <button type="button" onclick="homePage()">Home Page</button>
-    </div>
-</body>
 
+    <div class = "loginScreen">
+        <h1 class = "loginTitle">Sign up</h1>
+
+        <div class="signUp">
+                <br><br>
+                <input type="text" name="username" id="username" placeholder = "Email or Username" required>
+                <br><br>
+                <input type="password" name="pass" id="pass" placeholder = "Password" required>
+                <br><br>
+                <input type="text" name="nm" id="nam" placeholder = "Name" required>
+                <br><br>
+                <input type="text" name="username" id="uni" placeholder = "University" required>
+                <br><br>
+                <label for="professor">Sign up as a Professor?</label>
+                <label class="switch">
+                    <input type="checkbox" id="professor" name="professor" required>
+                    <span class="slider round"></span>
+                </label>            
+                <br><br>
+                <button type="button" name="Submit" onclick="createAccount();">Sign up</button>
+                <br><br>
+                <label for="signup">Don't have an account?</label>
+                <br><br>
+                <button type="button" name="login" onclick="window.location.href='login.html'">Login</button>
+                <button type="button" onclick="help()">Learn More</button>
+        </div>
+</body>
 </html>

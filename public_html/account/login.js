@@ -96,13 +96,13 @@ function createAccountprof() {
     Function to redirect User to Help page
 */
 function help() {
-    window.location.href = '/account/help_page.html';
+    window.location.href = './help_page.html';
 }
 
 /*
     Function to redirect User to the index page
 */
 function homePage() {
-    window.location.href = '/account/index.html';
+    window.location.href = './index.html';
 }
 

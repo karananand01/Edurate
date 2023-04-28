@@ -1,184 +1,176 @@
-/*
-    File: style.css
-
-    Author: Aditya Gupta, Karan Anand
-
-    Description: CSS page that contains styling information for the
-    following html pages - search_page.html, course_page.html, prof_page.html,
-    and help_page.html
-*/
-html,
 body {
-    margin: 0;
-}
-
-h1 {
-    text-align: center;
-    margin: 15px;
-}
-
-
-
-/* Styling for search_page.html */
-
-#welc {
-    position: fixed;
-    width: 100%;
-    height: 10%;
-    border-bottom: 2px solid black;
-}
-
-#welc_text {
-    position: fixed;
-    text-align: center;
-    width: 40%;
-    left: 40px;
-}
-
-#stud_info {
-    position: fixed;
-    width: 30%;
-    right: 10px;
-}
-
-#srch {
-    position: fixed;
-    overflow: auto;
-    top: 10%;
-    padding: 10px;
-    width: 100%;
-    height: 85%;
-    text-align: center;
-    border-bottom: 2px solid black;
-}
-
-#srch_res {
-    margin-top: 10px;
-    border-top: 2px solid black;
-    padding: 10px;
-}
-
-/* Styling for prof_page.html */
-
-#img {
-    border: 2px solid black;
-    display: inline-block;
-    position: relative;
-    margin: 10px;
-    top: 100px;
-    left: 100px;
-    width: 200px;
-    height: 200px;
-}
-
-#about {
-    border: 2px solid black;
-    display: inline-block;
-    position: relative;
-    width: 400px;
-    height: 400px;
-    left: 150px;
-}
-
-#crs_lst {
-    border: 2px solid black;
-    display: inline-block;
-    position: relative;
-    left: 200px;
-    width: 400px;
-    height: 400px;
-}
-
-#edit_prof {
-    border: 2px solid black;
-    display: block;
-    position: absolute;
-    top: 600px;
-    margin: 20px;
-}
-
-/* Styling for course page */
-
-#crs_nm {
-    background-color: antiquewhite;
-    margin: 0;
-    top: 0;
-    position: fixed;
-    width: 100%;
-    height: 70px;
-    border-bottom: 2px solid black;
-    z-index: 2;
-}
-
-#crs_ovrw {
-    display: block;
-    margin: 40px;
-    position: relative;
-    top: 100px;
-    height: 200px;
-}
-
-#rvs {
-    position: relative;
-    top: 20px;
-    width: 80%;
-    height: 500px;
-    margin: 2px solid black;
-}
-
-#add_rv {
-    position: relative;
-    top: 50px;
-}
-
-/* Styling for index.html */
-.mainScreenBut {
-    border: 3px solid green;
-    padding: 20%;
-    position: fixed;
-    margin: 5%;
-    left: 25%;
-}
-
-/* Styling for loginStu.html */
-.loginStu {
-    padding: 5%;
-    margin: auto;
-    width: 20%;
-    border: 3px solid black;
-}
-
-/* Styling for SignUp.html */
-.signUp {
-    border: 3px solid #fff;
-    padding: 20px;
-}
-
-.psignUp {
-    width: 50%;
-    float: left;
-    padding: 20px;
-    border: 2px solid red;
-}
-
-.signUp {
     display: flex;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: #153655;
 }
 
-.psignUp {
+.heading-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex: 1;
-    border: 2px solid black;
+    background-color: rgb(227, 239, 244);
+    height: 100vh;
+
 }
 
-#control {
-    position: fixed;
-    background-color: cadetblue;
-    text-align: center;
-    padding: 2px;
-    z-index: 2;
-    width: 200px;
-    height: 30px;
-    top: 20px;
-    right: 20px;
-    border: 2px solid black;
+.heading-containerSU {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    background-color: rgb(227, 239, 244);
+    height: 110vh;
+
 }
+
+.heading {
+    font-size: 2rem;
+    text-align: center;
+    color: #153655;
+}
+  
+.mainScreenBut {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #153655;
+    padding: 20px;
+    flex: 0 0 40%;
+    font-size: 25px;
+    text-align: center;
+    color: white;
+}
+  
+.mainScreenBut button {
+    margin: 2px;
+    border: none;
+    color: rgb(227, 239, 244);
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 1s;
+    cursor: pointer;      
+    background-color: rgb(227, 239, 244); 
+    color: black; 
+    border: 2px solid #021020;
+}
+
+.mainScreenBut button:hover{
+    background-color: #19456A;
+    color: rgb(227, 239, 244);
+}
+
+.loginTitle{
+    text-align: center;
+    padding-top: 50px;
+}
+.loginScreen, .signupScreen {
+    display: flex;
+    flex-direction: column;
+    align-items: normal;
+    justify-content: center;
+    background-color: #153655;
+    padding: 20px;
+    flex: 0 0 40%;
+    font-size: 25px;
+    text-align: center;
+    color: white;
+}
+  
+.loginScreen button {
+    margin: 2px;
+    border: none;
+    color: rgb(227, 239, 244);
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 1s;
+    cursor: pointer;      
+    background-color: rgb(227, 239, 244); 
+    color: black; 
+    border: 2px solid #021020;
+}
+
+.loginScreen button:hover{
+    background-color: #19456A;
+    color: rgb(227, 239, 244);
+}
+
+.loginStu input, .signUp input{
+    height:50px;
+    font-size:20pt;
+}
+
+img{
+    position: relative;
+    left: -25px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+  
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+  
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
