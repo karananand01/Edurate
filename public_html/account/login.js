@@ -17,7 +17,7 @@ function login() {
     as student or prof based on
     checkbox value
 */
-function createAccount(){
+function createAccount() {
     let isProf = $('#professor');
     if (isProf.prop("checked")) {
         createAccountprof();
@@ -51,8 +51,10 @@ function loginstudent() {
 function createAccountstudent() {
     let u = $('#username').val();
     let p = $('#pass').val();
+    let uni = $('#uni').val();
+    let nm = $('#nam').val();
     $.get(
-        '/student/account/create/' + u + '/' + encodeURIComponent(p),
+        '/student/account/create/' + u + '/' + encodeURIComponent(p) + '/' + uni + '/' + nm,
         (data, status) => {
             alert(data);
         });

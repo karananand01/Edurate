@@ -70,7 +70,8 @@ var StudentSchema = new mongoose.Schema({
     password: String,
     salt: String,
     hash: String,
-    University: String,
+    university: String,
+    name: String,
     Major: String
 });
 var Student = mongoose.model('Student', StudentSchema);
@@ -120,7 +121,7 @@ app.get('/logout', (req, res) => {
 /**
  * Create new student account
  */
-app.get('/student/account/create/:username/:password', (req, res) => {
+app.get('/student/account/create/:username/:password/:uni/:nm', (req, res) => {
     let p1 = Student.find({ username: req.params.username }).exec();
     p1.then((results) => {
         if (results.length > 0) {
@@ -135,6 +136,8 @@ app.get('/student/account/create/:username/:password', (req, res) => {
 
             var newUser = new Student({
                 username: req.params.username,
+                university: req.params.uni,
+                name: req.params.nm,
                 salt: newSalt,
                 hash: newHash
             });
@@ -180,6 +183,20 @@ app.get('/student/account/login/:username/:password', (req, res) => {
     });
     p1.catch((error) => {
         res.end('login failed');
+    });
+});
+
+app.get('/student/details/:name', (req, res) => {
+    let st = req.params.name;
+    let p1 = Student.findOne({ username: st }).exec();
+    p1.then((doc) => {
+        result = {
+            univ: doc.university, name: doc.name,
+        };
+        res.end(JSON.stringify(result));
+    })
+    p1.catch((err) => {
+        res.end('FAIL');
     });
 });
 

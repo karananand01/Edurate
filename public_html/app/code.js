@@ -88,6 +88,32 @@ function getCoursePage() {
 }
 
 /*
+    Function to get student information to customize search page
+*/
+function getStudent() {
+    let stud = getUser(document.cookie);
+    $.get(
+        '/student/details/' + stud, (rs, status) => {
+            if (rs != 'FAIL') {
+                data = JSON.parse(rs);
+                fillStudentInfo(data);
+            }
+        }
+    );
+}
+
+/*
+    Function that uses information retrieved from the database to fill 
+    the homepage with customized welcome messages and student information
+*/
+function fillStudentInfo(data) {
+    let head = document.getElementById('welc_text');
+    head.innerText = "Welcome " + data.name + " !";
+    let univ = document.getElementById('stud_info');
+    univ.innerText = data.univ;
+}
+
+/*
     Function that uses information retreived from the database
     about a course and uses it to populate the homepage of the
     course. The home page contains some common elements visible
