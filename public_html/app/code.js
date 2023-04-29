@@ -10,7 +10,7 @@ function getCookieName(cookie, name) {
         let keyVal = cookies[i].split("=");
         if (keyVal[0].trim() == name) {
             let val = keyVal[1].split("%22");
-            val[3] = val[3].replace("%20", " ");
+            val[3] = val[3].replaceAll("%20", " ");
             return String(val[3]);
         }
     }
@@ -28,7 +28,7 @@ function getUser(cookie) {
         let keyVal = cookies[i].split("=");
         if (keyVal[0].trim() == "login") {
             let val = keyVal[1].split("%22");
-            val[3] = val[3].replace("%20", " ");
+            val[3] = val[3].replaceAll("%20", " ");
             return String(val[3]);
         }
     }
@@ -127,7 +127,7 @@ function fillCourseInfo(data) {
     let crsProf = document.getElementById("crs_prof");
     crsHead.text(data.name);
     crsText.text(data.overview);
-    data.prof = data.prof.replace(" ", "&nbsp");
+    data.prof = data.prof.replaceAll(" ", "&nbsp");
     let lnk = "<a href='javascript:;' onclick=getProf('";
     lnk += data.prof + "')>" + data.prof + "</a><br>";
     crsProf.innerHTML = lnk;
@@ -175,7 +175,7 @@ function fillInfo(data) {
     abtBody.text(data.about);
     cls = "";
     for (i in data.courses) {
-        data.courses[i] = data.courses[i].replace(" ", "&nbsp");
+        data.courses[i] = data.courses[i].replaceAll(" ", "&nbsp");
         cls += '<a href="javascript:;" onclick=getCourse("';
         cls += data.courses[i] + '")>' + data.courses[i] + '</a><br>';
     }
@@ -222,7 +222,7 @@ function changeAbt() {
     name is the String containing the course name.
 */
 function getCourse(name) {
-    name = name.replace("&nbsp", " ");
+    name = name.replaceAll("&nbsp", " ");
     $.get(
         '/course/page/' + name, (rs, status) => {
             if (rs = 'Success') {
@@ -238,7 +238,7 @@ function getCourse(name) {
     name is the String containing the professor's name.
 */
 function getProf(name) {
-    name = name.replace("&nbsp", " ");
+    name = name.replaceAll("&nbsp", " ");
     $.get('/prof/cookie/' + name, () => {
         window.location.href = '/app/prof_page.html';
     });
@@ -369,7 +369,7 @@ function crsSrch() {
     let p1 = $.get('/course/search/' + srch, (data, status) => {
         rs = JSON.parse(data)
         for (i in rs) {
-            rs[i].name = rs[i].name.replace(" ", "&nbsp");
+            rs[i].name = rs[i].name.replaceAll(" ", "&nbsp");
             retText += "<div class='rv'> Course Name: " + rs[i].name + "<br><br>";
             retText += "Course Overview: " + rs[i].overview + "<br><br>";
             retText += "<button type='button'" + ' onclick=getCourse("';
@@ -395,7 +395,7 @@ function profSrch() {
     let p1 = $.get('/prof/search/' + srch, (data, status) => {
         rs = JSON.parse(data)
         for (i in rs) {
-            rs[i].name = rs[i].name.replace(" ", "&nbsp");
+            rs[i].name = rs[i].name.replaceAll(" ", "&nbsp");
             retText += "<div class='rv'> Professor Name: " + rs[i].name + "<br><br>";
             retText += "About Professor: " + rs[i].about + "<br><br>";
             retText += "<button type='button'" + ' onclick=getProf("';

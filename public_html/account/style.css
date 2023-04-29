@@ -31,7 +31,7 @@ body {
     text-align: center;
     color: #153655;
 }
-  
+
 .mainScreenBut {
     display: flex;
     flex-direction: column;
@@ -44,7 +44,7 @@ body {
     text-align: center;
     color: white;
 }
-  
+
 .mainScreenBut button {
     margin: 2px;
     border: none;
@@ -56,22 +56,24 @@ body {
     font-size: 16px;
     margin: 4px 2px;
     transition-duration: 1s;
-    cursor: pointer;      
-    background-color: rgb(227, 239, 244); 
-    color: black; 
+    cursor: pointer;
+    background-color: rgb(227, 239, 244);
+    color: black;
     border: 2px solid #021020;
 }
 
-.mainScreenBut button:hover{
+.mainScreenBut button:hover {
     background-color: #19456A;
     color: rgb(227, 239, 244);
 }
 
-.loginTitle{
+.loginTitle {
     text-align: center;
     padding-top: 50px;
 }
-.loginScreen, .signupScreen {
+
+.loginScreen,
+.signupScreen {
     display: flex;
     flex-direction: column;
     align-items: normal;
@@ -83,7 +85,7 @@ body {
     text-align: center;
     color: white;
 }
-  
+
 .loginScreen button {
     margin: 2px;
     border: none;
@@ -95,23 +97,24 @@ body {
     font-size: 16px;
     margin: 4px 2px;
     transition-duration: 1s;
-    cursor: pointer;      
-    background-color: rgb(227, 239, 244); 
-    color: black; 
+    cursor: pointer;
+    background-color: rgb(227, 239, 244);
+    color: black;
     border: 2px solid #021020;
 }
 
-.loginScreen button:hover{
+.loginScreen button:hover {
     background-color: #19456A;
     color: rgb(227, 239, 244);
 }
 
-.loginStu input, .signUp input{
-    height:50px;
-    font-size:20pt;
+.loginStu input,
+.signUp input {
+    height: 50px;
+    font-size: 20pt;
 }
 
-img{
+img {
     position: relative;
     left: -25px;
 }
@@ -122,13 +125,13 @@ img{
     width: 60px;
     height: 34px;
 }
-  
-.switch input { 
+
+.switch input {
     opacity: 0;
     width: 0;
     height: 0;
 }
-  
+
 .slider {
     position: absolute;
     cursor: pointer;
@@ -139,9 +142,9 @@ img{
     background-color: #ccc;
     -webkit-transition: .4s;
     transition: .4s;
-  }
-  
-  .slider:before {
+}
+
+.slider:before {
     position: absolute;
     content: "";
     height: 26px;
@@ -151,26 +154,64 @@ img{
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
-  }
-  
-input:checked + .slider {
+}
+
+input:checked+.slider {
     background-color: #2196F3;
-  }
-  
-  input:focus + .slider {
+}
+
+input:focus+.slider {
     box-shadow: 0 0 1px #2196F3;
-  }
-  
-  input:checked + .slider:before {
+}
+
+input:checked+.slider:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
-  }
+}
 
-  .slider.round {
+.slider.round {
     border-radius: 34px;
-  }
-  
-  .slider.round:before {
+}
+
+.slider.round:before {
     border-radius: 50%;
-  }
+}
+
+#control {
+    text-align: center;
+    position: fixed;
+    height: 100px;
+    width: 100%;
+    background-color: #19456A;
+}
+
+#logo {
+    height: 100px;
+    width: 155px;
+}
+
+#home {
+    position: absolute;
+    left: 40px;
+    top: 15px;
+    margin: 2px;
+    border: none;
+    color: rgb(227, 239, 244);
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 1s;
+    cursor: pointer;
+    background-color: rgb(227, 239, 244);
+    color: black;
+    border: 2px solid #021020;
+}
+
+#home:hover {
+    background-color: #19456A;
+    color: rgb(227, 239, 244);
+}
