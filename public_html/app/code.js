@@ -312,13 +312,13 @@ function getReviews(ids) {
         let p1 = $.get('/review/retrieve/' + ids[i], (data, status) => {
             rv = JSON.parse(data);
             if (rv.visibility != "priv") {
-                retText += "<div class='rv'>" + "Posted by : " + rv.poster + "<br><br>";
-                retText += "Rating : " + rv.rating + "<br><br>Review :" + rv.review + "</div>";
+                retText += "<div class='rv'>" + "<b><i>Posted by :</b></i> " + rv.poster + "<br><br>";
+                retText += "<b><i>Rating : </b></i>" + rv.rating + "<br><br><b><i>Review :</b></i>" + rv.review + "<br><br></div>";
             } else if (isProf(document.cookie)) {
-                retText += "<div class='rv'> Direct Message <br><br>";
+                retText += "<div class='rv'> <b><i>Direct Message </b></i><br><br>";
                 retText += rv.review + "<br><br>";
                 retText += "<button type='button'" + ' onclick=deleteDM("';
-                retText += rv._id + '")>Delete Message</button></div>';
+                retText += rv._id + '")>Delete Message</button></div>     <div id="bar"></div>';
                 console.log(rv);
             }
 
@@ -375,7 +375,7 @@ function crsSrch() {
             retText += "<button type='button'" + ' onclick=getCourse("';
             retText += rs[i].name + '")>Learn more about course';
             retText += "</button></div>";
-            retText += "</button></div>  <div class='element'></div>";
+            retText += "</button></div>  <div class='element'></div> ";
         }
     });
     p1.then(() => {

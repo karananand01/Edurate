@@ -15,7 +15,7 @@
 <head>
     <meta charset="utf-8">
     <title></title>
-    <link id="cssFile" rel="stylesheet" type="text/css" href="./style.css">
+    <link id="cssFile" rel="stylesheet" type="text/css" href="./coursestyle.css">
     <script src="./jquery.js"></script>
     <script src="./code.js"></script>
 </head>
@@ -23,45 +23,55 @@
 
 <body onload="getCoursePage()">
 
-    <h1 id="crs_nm">Sample text</h1>
+    <div id="control">
+        <img src="./logo.png" 
+            alt="LogoSmall"
+            id = "edurateLogo">
+        
+        <h1 class = "subhcontrol">Know your <u>Course</u></h1>
+        <div class = "buttons">
+            <button type="button" onclick="homePage()">Back to home</button>   
+            <button type="button" onclick="help()">Help</button> 
+            <button type="button" onclick="logout()" id="log">Logout</button>
+        </div>
+    </div>
 
     <div id="crs_ovrw">
-        <h2>Course Overview</h2>
+        <h4>Course Overview</h4>
         <p id="crs_prof"></p>
-        <br>
+    </div>
+
+
+    <div id = "crsText">
+        <h1 id = "ovrwHead">About</h1>
         <p id="crs_txt">Sample text</p>
     </div>
+    <br>
 
-    <div id="rvs">
-        <h2>
-            Reviews
-        </h2>
+
+    <div id = "rvs">
+        <h1 id = "ovrwHead">Reviews</h1>
+        <div id='bar'><br>
         <div id="rv_in"></div>
     </div>
-
+    <br>
     <div id="add_rv">
-        <h2>
-            Add Review
-        </h2>
+
+        <h2 id = "ovrwHead">Help others. Add a review?</h2>
         <br>
-        <output>Review: </output>
-        <textarea id="new_rvw" rows="4" cols="150"></textarea>
-        <br><br>
-        <output>Rating :</output>
+        <output>Rate on a scale of 5: </output>
         <input type="range" value="0" max="4" id="csrange" oninput="updateRange();">
+        <output>You're saying: </output>
         <output id="shift">1</output>
-        <br><br>
-        <button type="button" onclick="addRvw()">Add Review</button>
+
+        <br>
+        <textarea id="new_rvw" rows="4" cols="150" placeholder = "Share your experience here!"></textarea>
+        <br>
+        <button type="button" onclick="addRvw()">Post Review</button>
+        <br>
         <button type="button" onclick="addDM()">Send as Direct message (anonymous)</button>
         <br>
     </div>
 
-    <div id="control">
-        <button type="button" onclick="homePage()">Home Page</button>
-        <button type="button" onclick="logout()">Log Out</button>
-        <button type="button" onclick="help()">Help</button>
-    </div>
-
 </body>
-
 </html>
