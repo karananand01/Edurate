@@ -456,3 +456,16 @@ function addImage() {
         }
     });
 }
+
+
+/*
+Search results for student. Depends on selection
+*/
+function srch() {
+    let isProf = $('#prof-search');
+    if (isProf.prop("checked")) {
+        profSrch();
+    } else {
+        crsSrch();
+    }
+}

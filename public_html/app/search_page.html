@@ -40,12 +40,33 @@
         <h1 id="welc_text">Welcome Student</h1>
         <h2 id="stud_info">Student Info.</h2>
     </div>
-    
-    <div id="bar"></div>
 
+    <div id="bar"></div>
     <div id="srch">
+
+        <div class="toggle-btns">
+            <input type="radio" name="search-type" id="course-search">
+            <label for="course-search">By course</label>
+
+            <input type="radio" name="search-type" id="prof-search">
+            <label for="prof-search">By professor</label>
+        </div>
+        <br>
+        <input type="text" id="searchtext" placeholder="Search" required>
+        <br><br>
+        <div class="searchbutt">
+            <button type="button" class = "srchbutt" onclick=profSrch()>Search</button>
+        </div>
+        <br>
+        <div id="bar"></div>
+        <h2>Search Results</h2>
+        <div id="srch_res"> Search Results will be displayed here </div>
+    </div>
+<!---
+    <div id="srch">
+
         <h1>Search by course description</h1>
-        <input type="text" id="crs_desc">
+        <input type="text" id="searchtext" placeholder="Search" required>
         <button type="button" onclick=crsSrch()>Search</button>
 
         <h1>Search by professor name</h1>
@@ -53,7 +74,7 @@
         <button type="button" onclick=profSrch()>Search</button>
         <div id="srch_res"> Search Results will be displayed here </div>
     </div>
-
+-->
 </body>
 
 </html>

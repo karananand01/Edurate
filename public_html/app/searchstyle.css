@@ -17,6 +17,13 @@ body {
     align-items: center;
     color: white;
 }
+#searchtext {
+    height: 30px;
+    width: 500px;
+    font-size: 20pt;
+    text-align: center;
+}
+
   
 #control img {
     height: 75px;
@@ -71,20 +78,16 @@ body {
     height: 5px;
     background-color: white;
     margin-top: 0.1px;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 }
 
 #srch {
     text-align: center;
-    margin-top: 100px;
-}
-  
-#srch h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
+    margin-top: 5px;
 }
   
 #srch input[type="text"] {
+    margin-top: 5px;
     padding: 5px;
     font-size: 16px;
     border: 1px solid #ccc;
@@ -98,12 +101,67 @@ body {
     background-color: #333;
     color: white;
     cursor: pointer;
-}
-  
+    background-color: rgb(42,42,42);
+    border-radius: 50px;
+    cursor: pointer;
+    margin-right: 10px;
+    padding: 10px 20px;
+    text-align: center;
+    transition: background-color 0.3s;
+    margin-right: 20px;
+    margin-top: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;}
+
 #srch button[type="button"]:hover {
-    background-color: #555;
+    background-color: #EDF4FC;
+    color: #122840;
 }
-  
+
+#srchbutt{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    text-align: center;
+    clear: both;
+}
+.toggle-btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+  } 
+
+.toggle-btns label {
+    background-color: rgb(42,42,42);
+    border-radius: 50px;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 10px;
+    padding: 10px 20px;
+    text-align: center;
+    transition: background-color 0.3s;
+    margin-right: 20px;
+    margin-top: 0;
+
+}
+
+.toggle-btns label:hover {
+    background-color: black;
+}
+
+.toggle-btns input[type="radio"] {
+    display: none;
+}
+
+.toggle-btns input[type="radio"]:checked + label {
+    background-color: #4993D4;
+    color: #fff;
+}
+
 #srch_res {
     margin-top: 20px;
     font-size: 16px;
