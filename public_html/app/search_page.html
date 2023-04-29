@@ -15,19 +15,33 @@
 <head>
     <meta charset="utf-8">
     <title></title>
-    <link id="cssFile" rel="stylesheet" type="text/css" href="./style.css">
+    <link id="cssFile" rel="stylesheet" type="text/css" href="./searchstyle.css">
     <script src="./jquery.js"></script>
     <script src="./code.js"></script>
 </head>
 
 
-<body onload="getStudent()">
-    <div id="welc">
-        <h1 id="welc_text"> Welcome text </h1>
+<body onload = "getStudent()">
 
-        <div id="stud_info">Sample text</div>
+    <div id="control">
+        <img src="./logo.png" 
+            alt="LogoSmall"
+            id = "edurateLogo">
+        
+        <h2 class = "subhcontrol">Find courses, Find professors.</h2>
+        <div class = "buttons">
+            <button type="button" onclick="homePage()">Home</button>
+            <button type="button" onclick="help()">Help</button>    
+            <button type="button" onclick="logout()">Logout</button>
+        </div>
     </div>
 
+    <div id="welc">
+        <h1 id="welc_text">Welcome Student</h1>
+        <h2 id="stud_info">Student Info.</h2>
+    </div>
+    
+    <div id="bar"></div>
 
     <div id="srch">
         <h1>Search by course description</h1>
@@ -38,11 +52,6 @@
         <input type="text" id="prf_name">
         <button type="button" onclick=profSrch()>Search</button>
         <div id="srch_res"> Search Results will be displayed here </div>
-    </div>
-    <div id="control">
-        <button type="button" onclick="homePage()">Home Page</button>
-        <button type="button" onclick="logout()">Log Out</button>
-        <button type="button" onclick="help()">Help</button>
     </div>
 
 </body>

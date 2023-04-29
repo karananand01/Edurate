@@ -1,0 +1,110 @@
+body {
+    height: 100vh;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: #153655;
+    color: white;
+}
+
+#control {
+    background-color: rgb(42,42,42);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+  
+#control img {
+    height: 75px;
+    width: 150px;
+    margin-right: 30px;
+}
+  
+#control button {
+    color: white;
+    font-size: 16px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: all 0.3s ease-in-out;
+}
+  
+#control button:hover {
+    text-decoration: underline;
+    background-color: #4993D4;
+    color: #EDF4FC; 
+    transform: scale(1.5); 
+}
+  
+#control .nav-item {
+    color: #4993D4;
+    font-size: 16px;
+    cursor: pointer;
+}
+  
+#welc {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+    padding-bottom: 5px;
+    margin-top: 75px;
+}
+  
+#welc_text {
+    font-size: 40px;
+    margin-top: 20px;
+}
+
+#stud_info {
+    font-size: 24px;
+    margin: 0;
+}
+
+#bar {
+    height: 5px;
+    background-color: white;
+    margin-top: 0.1px;
+    margin-bottom: 30px;
+}
+
+#srch {
+    text-align: center;
+    margin-top: 100px;
+}
+  
+#srch h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+  
+#srch input[type="text"] {
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    margin-right: 5px;
+}
+  
+#srch button[type="button"] {
+    padding: 5px 10px;
+    font-size: 16px;
+    border: none;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+}
+  
+#srch button[type="button"]:hover {
+    background-color: #555;
+}
+  
+#srch_res {
+    margin-top: 20px;
+    font-size: 16px;
+}  
