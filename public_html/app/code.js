@@ -370,11 +370,12 @@ function crsSrch() {
         rs = JSON.parse(data)
         for (i in rs) {
             rs[i].name = rs[i].name.replaceAll(" ", "&nbsp");
-            retText += "<div class='rv'> Course Name: " + rs[i].name + "<br><br>";
-            retText += "Course Overview: " + rs[i].overview + "<br><br>";
+            retText += "<div class='rv'> <b><i>Course:</b></i> " + rs[i].name + "<br><br>";
+            retText += "<b><i>Overview: </b></i>" + rs[i].overview + "<br><br>";
             retText += "<button type='button'" + ' onclick=getCourse("';
-            retText += rs[i].name + '")>Click here to visit course page';
+            retText += rs[i].name + '")>Learn more about course';
             retText += "</button></div>";
+            retText += "</button></div>  <div class='element'></div>";
         }
     });
     p1.then(() => {
@@ -397,11 +398,11 @@ function profSrch() {
         rs = JSON.parse(data)
         for (i in rs) {
             rs[i].name = rs[i].name.replaceAll(" ", "&nbsp");
-            retText += "<div class='rv'> Professor Name: " + rs[i].name + "<br><br>";
-            retText += "About Professor: " + rs[i].about + "<br><br>";
+            retText += "<div class='rv'><b><i> Professor:</b></i> " + rs[i].name + "<br><br>";
+            retText += "<b><i>About: </b></i>" + rs[i].about + "<br><br>";
             retText += "<button type='button'" + ' onclick=getProf("';
-            retText += rs[i].name + '")>Click here to visit home page';
-            retText += "</button></div>";
+            retText += rs[i].name + '")>View professor profile';
+            retText += "</button></div>  <div class='element'></div>";
         }
     });
     p1.then(() => {
