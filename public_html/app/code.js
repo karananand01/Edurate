@@ -364,7 +364,7 @@ function updateRange() {
     home page of the course
 */
 function crsSrch() {
-    let srch = $("#crs_desc").val();
+    let srch = document.getElementById("searchtext").value;
     let retText = "";
     let p1 = $.get('/course/search/' + srch, (data, status) => {
         rs = JSON.parse(data)
@@ -457,7 +457,6 @@ function addImage() {
         }
     });
 }
-
 
 /*
 Search results for student. Depends on selection
