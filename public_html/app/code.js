@@ -390,7 +390,8 @@ function crsSrch() {
     home page of the professor.
 */
 function profSrch() {
-    let srch = $("#prf_name").val();
+    let srch = document.getElementById("searchtext").value;
+    console.log(srch);
     let retText = "";
     let p1 = $.get('/prof/search/' + srch, (data, status) => {
         rs = JSON.parse(data)
