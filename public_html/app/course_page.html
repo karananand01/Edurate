@@ -24,54 +24,55 @@
 <body onload="getCoursePage()">
 
     <div id="control">
-        <img src="./logo.png" 
-            alt="LogoSmall"
-            id = "edurateLogo">
-        
-        <h1 class = "subhcontrol">Know your <u>Course</u></h1>
-        <div class = "buttons">
-            <button type="button" onclick="homePage()">Back to home</button>   
-            <button type="button" onclick="help()">Help</button> 
+        <img src="./logo.png" alt="LogoSmall" id="edurateLogo">
+
+        <h1 class="subhcontrol">Know your <u>Course</u></h1>
+        <div class="buttons">
+            <button type="button" onclick="homePage()">Back to home</button>
+            <button type="button" onclick="help()">Help</button>
             <button type="button" onclick="logout()" id="log">Logout</button>
         </div>
     </div>
 
     <div id="crs_ovrw">
-        <h4>Course Overview</h4>
+        <h4 id="crs_nm">Course Overview</h4>
         <p id="crs_prof"></p>
     </div>
 
 
-    <div id = "crsText">
-        <h1 id = "ovrwHead">About</h1>
+    <div id="crsText">
+        <h1 id="ovrwHead">About</h1>
         <p id="crs_txt">Sample text</p>
     </div>
     <br>
 
 
-    <div id = "rvs">
-        <h1 id = "ovrwHead">Reviews</h1>
-        <div id='bar'><br>
+    <div id="rvs">
+        <h1 id="ovrwHead">Reviews</h1>
+        <div id='bar'><br></div>
         <div id="rv_in"></div>
-    </div>
-    <br>
-    <div id="add_rv">
+        <div id='bar'><br></div>
 
-        <h2 id = "ovrwHead">Help others. Add a review?</h2>
-        <br>
-        <output>Rate on a scale of 5: </output>
-        <input type="range" value="0" max="4" id="csrange" oninput="updateRange();">
-        <output>You're saying: </output>
-        <output id="shift">1</output>
 
         <br>
-        <textarea id="new_rvw" rows="4" cols="150" placeholder = "Share your experience here!"></textarea>
-        <br>
-        <button type="button" onclick="addRvw()">Post Review</button>
-        <br>
-        <button type="button" onclick="addDM()">Send as Direct message (anonymous)</button>
-        <br>
-    </div>
+        <div id="add_rv">
+
+            <h2 id="ovrwHead">Help others. Add a review?</h2>
+            <br>
+            <output>Rate on a scale of 5: </output>
+            <input type="range" value="0" max="4" id="csrange" oninput="updateRange();">
+            <output>You're saying: </output>
+            <output id="shift">1</output>
+
+            <br>
+            <textarea id="new_rvw" rows="4" cols="150" placeholder="Share your experience here!"></textarea>
+            <br>
+            <button type="button" onclick="addRvw()">Post Review</button>
+            <br>
+            <button type="button" onclick="addDM()">Send as Direct message (anonymous)</button>
+            <br>
+        </div>
 
 </body>
+
 </html>

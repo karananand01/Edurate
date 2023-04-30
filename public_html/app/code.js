@@ -125,7 +125,7 @@ function fillCourseInfo(data) {
     let crsHead = $("#crs_nm");
     let crsText = $("#crs_txt");
     let crsProf = document.getElementById("crs_prof");
-    crsHead.text(data.name);
+    crsHead.text("Course Overview - " + data.name);
     crsText.text(data.overview);
     data.prof = data.prof.replaceAll(" ", "&nbsp");
     let lnk = "<a href='javascript:;' onclick=getProf('";
@@ -135,7 +135,7 @@ function fillCourseInfo(data) {
     if (isProf(document.cookie)) {
         let rem = document.getElementById("add_rv");
         let txt = "<h2>Edit Course Information<h2><br><br>";
-        txt += '<textarea id="orv_edit" rows="3" cols="150"></textarea>';
+        txt += '<textarea id="orv_edit" rows="3" cols="150"></textarea><br>';
         txt += '<button type="button" onclick="editCourse()">Edit Overview</button>'
         rem.innerHTML = txt;
     }
@@ -274,6 +274,9 @@ function addRvw() {
         , (data, status) => {
             alert(data);
             if (data == "Success") {
+                document.getElementById("new_rvw").value = "";
+                document.getElementById("shift").value = 1;
+                document.getElementById("csrange").value = 0;
                 getCoursePage();
             }
 
@@ -293,6 +296,9 @@ function addDM() {
         , (data, status) => {
             alert(data);
             if (data == "Success") {
+                document.getElementById("new_rvw").value = "";
+                document.getElementById("shift").value = 1;
+                document.getElementById("csrange").value = 0;
                 getCoursePage();
             }
 
@@ -313,12 +319,13 @@ function getReviews(ids) {
             rv = JSON.parse(data);
             if (rv.visibility != "priv") {
                 retText += "<div class='rv'>" + "<b><i>Posted by :</b></i> " + rv.poster + "<br><br>";
-                retText += "<b><i>Rating : </b></i>" + rv.rating + "<br><br><b><i>Review :</b></i>" + rv.review + "<br><br></div>";
+                retText += "<b><i>Rating : </b></i>" + rv.rating + "<br><br><b><i>Review :</b></i>";
+                retText += rv.review + "<br><br></div> <br> ";
             } else if (isProf(document.cookie)) {
                 retText += "<div class='rv'> <b><i>Direct Message </b></i><br><br>";
                 retText += rv.review + "<br><br>";
                 retText += "<button type='button'" + ' onclick=deleteDM("';
-                retText += rv._id + '")>Delete Message</button></div>     <div id="bar"></div>';
+                retText += rv._id + '")>Delete Message</button></div> <br>  ';
                 console.log(rv);
             }
 

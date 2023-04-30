@@ -37,9 +37,10 @@ function loginstudent() {
     $.get(
         '/student/account/login/' + u + '/' + encodeURIComponent(p),
         (data, status) => {
-            alert(data);
             if (data == 'SUCCESS') {
                 window.location.href = '/app/search_page.html';
+            } else {
+                alert(data);
             }
         });
 }
@@ -57,6 +58,9 @@ function createAccountstudent() {
         '/student/account/create/' + u + '/' + encodeURIComponent(p) + '/' + uni + '/' + nm,
         (data, status) => {
             alert(data);
+            if (data == 'Created new account!') {
+                window.location.href = '/account/index.html';
+            }
         });
 }
 
@@ -71,9 +75,10 @@ function loginprof() {
     $.get(
         '/prof/account/login/' + u + '/' + encodeURIComponent(p),
         (data, status) => {
-            alert(data);
             if (data == 'SUCCESS') {
                 window.location.href = '/app/prof_page.html';
+            } else {
+                alert(data);
             }
         });
 }
@@ -91,6 +96,9 @@ function createAccountprof() {
         '/prof/account/create/' + u + '/' + encodeURIComponent(p) + '/' + uni + '/' + nm,
         (data, status) => {
             alert(data);
+            if (data == 'Created new account!') {
+                window.location.href = '/account/index.html';
+            }
         });
 }
 
