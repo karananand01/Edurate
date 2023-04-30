@@ -134,8 +134,8 @@ function fillCourseInfo(data) {
     getReviews(data.rvws);
     if (isProf(document.cookie)) {
         let rem = document.getElementById("add_rv");
-        let txt = "<h2>Edit Course Information<h2><br><br>";
-        txt += '<textarea id="orv_edit" rows="3" cols="150"></textarea><br>';
+        let txt = "<h2>Edit Course Information<h2><br>";
+        txt += '<textarea id="orv_edit" rows="2" cols="150"></textarea><br>';
         txt += '<button type="button" onclick="editCourse()">Edit Overview</button>'
         rem.innerHTML = txt;
     }
