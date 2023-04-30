@@ -52,17 +52,18 @@
     <div id="edit_prof">
         <h2>Edit Information</h2>
         <br><br>
+
         <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="text" id="crs_add" placeholder="Enter new course name">
+            <button type="button" onclick="addCourse()">Add a Course</button>
+            <br><br><br>
             <input type="file" accept="image/*" name="photo" id="img">
-            <input type="submit" onclick=addImage() value="Add Profile image">
+            <input type="submit" onclick=addImage() value="Add Profile image" id="sub">
+            <br><br>
         </form>
-        <br><br>
-        <button type="button" onclick="changeAbt()">Change about information</button>
-        <textarea id="abt_edit" rows="3" cols="150"></textarea>
-        <br><br>
-        <button type="button" onclick="addCourse()">Add a Course</button>
-        <input type="text" id="crs_add">
-        <br><br>
+        <textarea id="abt_edit" rows="4" cols="120" placeholder="Write your new overview here!">
+        </textarea><br><br>
+        <button type="button" onclick="changeAbt()">Add new Overview</button>
     </div>
 
 </body>
