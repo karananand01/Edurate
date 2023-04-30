@@ -1,3 +1,11 @@
+/*
+    Author: Aditya Gupta, Karan Anand
+    Course: CSC 337
+    Final Project, Edurate, style_help.css
+
+    Style sheet for help_page.html
+*/
+
 body {
     display: flex;
     height: 100vh;

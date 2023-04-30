@@ -1,4 +1,14 @@
 /*
+    Author: Aditya Gupta, Karan Anand
+    Course: CSC 337
+    Final Project, Edurate, login.js
+
+    this file contains all the code and scripts required
+    to run the login process, Edurate, which includes 
+    facilitating login for student/prfoessor individually
+*/
+
+/*
     function to facilitate login
     as student or prof based on
     checkbox value

@@ -1,3 +1,16 @@
+/*
+    Author: Aditya Gupta, Karan Anand
+    Course: CSC 337
+    Final Project, Edurate, server.js
+
+    this file contains all the code and scripts required
+    to run the server side of app, Edurate, which includes 
+    course page, help page, professor page and search pages.
+    Customised to professor/student login
+    Also implements login/signup and all features, including
+    connection to Mongodb
+*/
+
 const mongoose = require('mongoose');
 const express = require('express');
 const cookieParser = require('cookie-parser');

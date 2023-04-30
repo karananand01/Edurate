@@ -1,4 +1,15 @@
 /*
+    Author: Aditya Gupta, Karan Anand
+    Course: CSC 337
+    Final Project, Edurate, code.js
+
+    this file contains all the code and scripts required
+    to run the app, Edurate, which includes course page,
+    help page, professor page and search pages.
+    Customised to professor/student login
+*/
+
+/*
     Function that takes all cookies and a name and
     returns the appropriate value for the cookie
     if it exists.

@@ -1,3 +1,11 @@
+/*
+    Author: Aditya Gupta, Karan Anand
+    Course: CSC 337
+    Final Project, Edurate, coursestyle.css
+
+    Style sheet for course_page.html
+*/
+
 body {
     height: 100vh;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -69,7 +77,7 @@ a {
     margin-top: 20px;
 }
 
-#bar {
+.bar {
     position: relative;
     height: 5px;
     background-color: white;
@@ -89,7 +97,7 @@ a {
     width: 80%;
 }
 
-#ovrwHead {
+.ovrwHead {
     text-align: center;
 }
 
