@@ -167,17 +167,22 @@ function editCourse() {
 */
 function fillInfo(data) {
     let abtHead = $("#abt_hd");
+    let abtUni = $("#abt_uni");
     let abtBody = $("#abt_txt");
     let cs = document.getElementById("crs_lst");
     let im = document.getElementById("profPic");
     im.innerHTML = showImage(data.image)
-    abtHead.text('Professor ' + data.name + " : " + data.univ);
+    abtHead.text(data.name);
+    abtUni.text("Affiliation: " + data.univ);
     abtBody.text(data.about);
     cls = "";
     for (i in data.courses) {
+        if (data.courses[i] == "") {
+            continue;
+        }
         data.courses[i] = data.courses[i].replaceAll(" ", "&nbsp");
-        cls += '<a href="javascript:;" onclick=getCourse("';
-        cls += data.courses[i] + '")>' + data.courses[i] + '</a><br>';
+        cls += '   <a href="javascript:;" onclick=getCourse("';
+        cls += data.courses[i] + '")>' + data.courses[i] + '</a>   ';
     }
     cs.innerHTML = cls;
     if (!isProf(document.cookie)) {

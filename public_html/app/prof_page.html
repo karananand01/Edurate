@@ -16,18 +16,32 @@
 <head>
     <meta charset="utf-8">
     <title></title>
-    <link id="cssFile" rel="stylesheet" type="text/css" href="./style.css">
+    <link id="cssFile" rel="stylesheet" type="text/css" href="./profstyle.css">
     <script src="./jquery.js"></script>
     <script src="./code.js"></script>
 </head>
 
 
 <body onload="getProfPage()">
-    <div id="profPic"> Sample img</div>
+    <div id="control">
+        <img src="./logo.png" alt="LogoSmall" id="edurateLogo">
 
-    <div id="about">
-        <h2 id="abt_hd">Sample</h2>
-        <p id="abt_txt"></p>
+        <h1 class="subhcontrol">Know your <u>Professor</u></h1>
+        <div class="buttons">
+            <button type="button" onclick="homePage()">Back to home</button>
+            <button type="button" onclick="help()">Help</button>
+            <button type="button" onclick="logout()" id="log">Logout</button>
+        </div>
+    </div>
+
+    <div id="overview" class="flex-container">
+        <div id="profPic" class="flex-child"> Sample img</div>
+
+        <div id="about" class="flex-child">
+            <h1 id="abt_hd">Name Sample</h1>
+            <h2 id="abt_uni">University Sample</h2>
+            <p id="abt_txt"></p>
+        </div>
     </div>
 
     <div id="crs">
@@ -49,11 +63,6 @@
         <button type="button" onclick="addCourse()">Add a Course</button>
         <input type="text" id="crs_add">
         <br><br>
-    </div>
-    <div id="control">
-        <button type="button" onclick="homePage()">Home Page</button>
-        <button type="button" onclick="logout()">Log Out</button>
-        <button type="button" onclick="help()">Help</button>
     </div>
 
 </body>
