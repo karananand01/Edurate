@@ -36,7 +36,7 @@
     </div>
 
     <div id="overview" class="flex-container">
-        <div id="profPic" class="flex-child"> Sample img</div>
+        <div id="profPic" class="flex-child">Sample img</div>
 
         <div id="about" class="flex-child">
             <h1 id="abt_hd">Name Sample</h1>
@@ -50,22 +50,24 @@
         <p id="crs_lst"></p>
     </div>
 
-    <div id="edit_prof">
-        <h2>Edit Information</h2>
-        <br><br>
-
+    <div id = "edit_prof">
+        <h2>Update Information</h2>
+        <br>
         <form action="/upload" method="post" enctype="multipart/form-data">
-            <input type="text" id="crs_add" placeholder="Enter new course name">
-            <button type="button" onclick="addCourse()">Add a Course</button>
-            <br><br><br>
+            <label for="crs_add">Add a new course</label>
+            <input type="text" id="crs_add" placeholder="Ex. CSC337 or CSC 337 Web dev">
+            <button type="button" onclick="addCourse()">Add Course</button>
+            <br><br>
+            <label for="img">Update Profile Picture</label>
             <input type="file" accept="image/*" name="photo" id="img">
-            <input type="submit" onclick=addImage() value="Add Profile image" id="sub">
+            <input type="submit" onclick=addImage() value="Update" id="sub">
             <br><br>
         </form>
-        <textarea id="abt_edit" rows="4" cols="120" placeholder="Write your new overview here!">
-        </textarea><br><br>
-        <button type="button" onclick="changeAbt()">Add new Overview</button>
-    </div>
+        <label for="abt_edit">Update about information</label>
+        <textarea id="abt_edit" rows="6" cols="120" placeholder=
+        "Update about section here! Ex. 'I enjoy providing well-organized and high-quality CS education to the next generation of computer scientists. I have taught multiple courses at the University of Arizona, including CS 101, 110, 250, 317, 337, and 352.'"></textarea><br><br>
+        <button type="button" onclick="changeAbt()">Update</button>
+    </div>      
 
 </body>
 
