@@ -22,6 +22,7 @@ function getCookieName(cookie, name) {
         if (keyVal[0].trim() == name) {
             let val = keyVal[1].split("%22");
             val[3] = val[3].replaceAll("%20", " ");
+            val[3] = val[3].replaceAll("%C2%A0", " ");
             return String(val[3]);
         }
     }
@@ -159,6 +160,7 @@ function fillCourseInfo(data) {
 */
 function editCourse() {
     let newOr = $("#orv_edit").val();
+    newOr = newOr.replaceAll("/", "-");
     let crs = getCookieName(document.cookie, "course");
     $.get('/course/edit/overview/' + crs + '/' + newOr, (data, status) => {
         alert(data);
@@ -223,6 +225,7 @@ function showImage(filename) {
 */
 function changeAbt() {
     let newAb = $("#abt_edit").val();
+    newAb = newAb.replaceAll("/", "-");
     let prof = getCookieName(document.cookie, "prof");
     $.get('/prof/edit/about/' + prof + '/' + newAb, (data, status) => {
         alert(data);
@@ -267,6 +270,7 @@ function getProf(name) {
 */
 function addCourse() {
     let n = $("#crs_add").val();
+    n = n.replaceAll("/", "-");
     let prof = getCookieName(document.cookie, "prof");
     $.get('/course/create/' + n + '/' + prof, (data, status) => {
         alert(data);
@@ -285,6 +289,7 @@ function addCourse() {
 function addRvw() {
     let n = $("#new_rvw").val();
     let r = $("#shift").val();
+    n = n.replaceAll("/", "-");
     let crs = getCookieName(document.cookie, "course");
     $.get('/review/create/' + crs + '/' + n + '/' + r + '/' + getUser(document.cookie) + '/' + "pub"
         , (data, status) => {
@@ -307,6 +312,7 @@ function addRvw() {
 function addDM() {
     let n = $("#new_rvw").val();
     let r = $("#shift").val();
+    n = n.replaceAll("/", "-");
     let crs = getCookieName(document.cookie, "course");
     $.get('/review/create/' + crs + '/' + n + '/' + r + '/' + getUser(document.cookie) + '/' + "priv"
         , (data, status) => {
@@ -388,6 +394,7 @@ function updateRange() {
 */
 function crsSrch() {
     let srch = document.getElementById("searchtext").value;
+    srch = srch.replaceAll("/", "-");
     let retText = "";
     let p1 = $.get('/course/search/' + srch, (data, status) => {
         rs = JSON.parse(data)
@@ -415,6 +422,7 @@ function crsSrch() {
 */
 function profSrch() {
     let srch = document.getElementById("searchtext").value;
+    srch = srch.replaceAll("/", "-");
     console.log(srch);
     let retText = "";
     let p1 = $.get('/prof/search/' + srch, (data, status) => {
@@ -465,6 +473,16 @@ function logout() {
         window.location.href = '/account/index.html';
     });
 
+}
+
+/*
+    Function to log user out when they close the tab
+*/
+window.onunload = function () {
+    $.get("/logout", () => {
+        document.cookie = "";
+        window.location.href = '/account/index.html';
+    });
 }
 
 /*

@@ -44,6 +44,9 @@ function createAccount() {
 function loginstudent() {
     let u = $('#username').val();
     let p = $('#pass').val();
+    u = u.replaceAll("/", "-");
+    p = u.replaceAll("/", "-");
+
     $.get(
         '/student/account/login/' + u + '/' + encodeURIComponent(p),
         (data, status) => {
@@ -64,6 +67,10 @@ function createAccountstudent() {
     let p = $('#pass').val();
     let uni = $('#uni').val();
     let nm = $('#nam').val();
+    u = u.replaceAll("/", "-");
+    p = u.replaceAll("/", "-");
+    uni = uni.replaceAll("/", "-");
+    nm = nm.replaceAll("/", "-");
     $.get(
         '/student/account/create/' + u + '/' + encodeURIComponent(p) + '/' + uni + '/' + nm,
         (data, status) => {
@@ -82,6 +89,8 @@ function createAccountstudent() {
 function loginprof() {
     let u = $('#username').val();
     let p = $('#pass').val();
+    u = u.replaceAll("/", "-");
+    p = u.replaceAll("/", "-");
     $.get(
         '/prof/account/login/' + u + '/' + encodeURIComponent(p),
         (data, status) => {
@@ -102,6 +111,10 @@ function createAccountprof() {
     let p = $('#pass').val();
     let uni = $('#uni').val();
     let nm = $('#nam').val();
+    u = u.replaceAll("/", "-");
+    p = u.replaceAll("/", "-");
+    uni = uni.replaceAll("/", "-");
+    nm = nm.replaceAll("/", "-");
     $.get(
         '/prof/account/create/' + u + '/' + encodeURIComponent(p) + '/' + uni + '/' + nm,
         (data, status) => {

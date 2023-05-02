@@ -21,16 +21,14 @@
 </head>
 
 
-<body onload = "getStudent()">
+<body onload="getStudent()">
 
     <div id="control">
-        <img src="./logo.png" 
-            alt="LogoSmall"
-            id = "edurateLogo">
-        
-        <h2 class = "subhcontrol">Find courses, Find professors.</h2>
-        <div class = "buttons">
-            <button type="button" onclick="help()">Help</button>    
+        <img src="./logo.png" alt="LogoSmall" id="edurateLogo">
+
+        <h2 class="subhcontrol">Find courses, Find professors.</h2>
+        <div class="buttons">
+            <button type="button" onclick="help()">Help</button>
             <button type="button" onclick="logout()">Logout</button>
         </div>
     </div>
@@ -44,17 +42,17 @@
     <div id="srch">
 
         <div class="toggle-btns">
-            <input type="radio" name="search-type" id="course-search">
-            <label for="course-search">By course</label>
+            <input type="radio" name="search-type" id="course-search" checked>
+            <label for="course-search">By course description</label>
 
             <input type="radio" name="search-type" id="prof-search">
-            <label for="prof-search">By professor</label>
+            <label for="prof-search">By professor name</label>
         </div>
         <br>
         <input type="text" id="searchtext" placeholder="Search" required>
         <br><br>
         <div class="searchbutt">
-            <button type="button" class = "srchbutt" onclick=srch()>Search</button>
+            <button type="button" class="srchbutt" onclick=srch()>Search</button>
         </div>
         <br>
         <div class="bar"></div>
