@@ -5,3 +5,5 @@ Final Project for CSC 337 - Authors: Aditya Gupta, Karan Anand
 - Students can search for courses and professors, leave ratings and reviews, or send anonymous DMs to professors
 - Professors can create courses, access feedback, update their/course information
 - The login system includes unique username creation, salting and hashing of password.
+
+Video demonstration of project : [video link](https://youtu.be/-rqrQjcO-EI)
